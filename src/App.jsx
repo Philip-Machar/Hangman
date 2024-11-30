@@ -1,4 +1,5 @@
 import Categories from "./pages/Categories"
+import GamePage from "./pages/GamePage"
 import Homepage from "./pages/Homepage"
 import HowToPlayPage from "./pages/HowToPlayPage"
 
@@ -7,7 +8,8 @@ const App = () => {
     <div>
       {/* <Homepage /> */}
       {/* <HowToPlayPage /> */}
-      <Categories />
+      {/* {<Categories />} */}
+      <GamePage />
     </div>
   )
 }
