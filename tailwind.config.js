@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        mouseMemoir: ["Mouse Memoirs", "sans-serif"]
+      }
+    },
   },
   plugins: [],
 }
