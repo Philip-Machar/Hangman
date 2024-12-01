@@ -1,11 +1,15 @@
 import Paused from "../components/Paused"
+import YouLose from "../components/YouLose"
+import YouWin from "../components/YouWin"
 
 const GamePage = () => {
   return (
     <div className="bg-[url(/assets/images/background-mobile.svg)] bg-cover bg-center h-screen relative flex flex-col items-center">
       {/* <div class="absolute inset-0 bg-black/50"></div> */}
       <div class="absolute inset-0 bg-black/60 z-20"></div>
-      <Paused />
+      {/* <Paused /> */}
+      {/* <YouWin /> */}
+      <YouLose />
       {/* Head */}
       <div className="absolute top-[40px] px-6 flex justify-between w-full">
         <div className="flex items-center gap-4">
