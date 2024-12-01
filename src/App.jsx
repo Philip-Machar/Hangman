@@ -6,8 +6,8 @@ import HowToPlayPage from "./pages/HowToPlayPage"
 const App = () => {
   return (
     <div>
-      <Homepage />
-      {/* <HowToPlayPage /> */}
+      {/* <Homepage /> */}
+      <HowToPlayPage />
       {/* <Categories /> */}
       {/* <GamePage /> */}
     </div>
