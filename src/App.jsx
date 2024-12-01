@@ -8,7 +8,7 @@ const App = () => {
     <div>
       {/* <Homepage /> */}
       {/* <HowToPlayPage /> */}
-      {/* {<Categories />} */}
+      {/* <Categories /> */}
       <GamePage />
     </div>
   )
