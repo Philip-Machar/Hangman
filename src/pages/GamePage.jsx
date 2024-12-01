@@ -4,70 +4,70 @@ import YouWin from "../components/YouWin"
 
 const GamePage = () => {
   return (
-    <div className="bg-[url(/assets/images/background-mobile.svg)] bg-cover bg-center h-screen relative flex flex-col items-center">
+    <div className="bg-[url(/assets/images/background-mobile.svg)] md:bg-[url(/assets/images/background-tablet.svg)] bg-cover bg-center h-screen relative flex flex-col items-center">
       <div class="absolute inset-0 bg-black/50"></div>
       {/* <div class="absolute inset-0 bg-black/60 z-20"></div> */}
       {/* <Paused /> */}
       {/* <YouWin /> */}
       {/* <YouLose /> */}
       {/* Head */}
-      <div className="absolute top-[40px] px-6 flex justify-between w-full">
-        <div className="flex items-center gap-4">
-            <div className="bg-gradient-to-b from-[#FE71FE] to-[#7199FF] w-[40px] h-[40px] rounded-full flex justify-center items-center relative">
-                <img src="/assets/images/icon-menu.svg" width="17px" alt="back icon" />
+      <div className="absolute top-[40px] md:top-[78px] px-6 md:px-12 flex justify-between w-full">
+        <div className="flex items-center gap-4 md:gap-8">
+            <div className="bg-gradient-to-b from-[#FE71FE] to-[#7199FF] w-[40px] h-[40px] md:w-[64px] md:h-[64px] rounded-full flex justify-center items-center relative">
+                <img src="/assets/images/icon-menu.svg" alt="back icon" className="w-[17px] md:w-[25px]" />
             </div>
-            <div className="text-white text-[36px]">Countries</div>
+            <div className="text-white text-[36px] md:text-[48px] tracking-wider">Countries</div>
         </div>
-        <div className="flex justify-center items-center gap-4">
-            <div className="w-[57px] h-[16px] bg-white rounded-3xl flex items-center">
-                <div className="bg-[#261676] w-[40%] h-[8px] rounded-3xl mx-1"></div>
+        <div className="flex justify-center items-center gap-4 md:gap-8">
+            <div className="w-[57px] h-[16px] md:w-[160px] md:h-[31px] bg-white rounded-3xl flex items-center">
+                <div className="bg-[#261676] w-[40%] h-[8px] md:w-[40%] md:h-[13px] rounded-3xl mx-1 md:mx-3"></div>
             </div>
-            <img src="/assets/images/icon-heart.svg" width="26px" alt="Heart icon" />
+            <img src="/assets/images/icon-heart.svg" alt="Heart icon" className="w-[26px] md:w-[53px]"/>
         </div>
       </div>
       {/* Guesses */}
-      <div className="flex flex-col gap-4 w-full px-6 items-center">
-        <div className="mt-40 grid grid-cols-7 gap-3 translate-x-6">
-            <div className="w-[37px] h-[64px] bg-[#3d73fb] flex justify-center rounded-xl relative">
-                <div className="w-[30px] h-[58px] bg-[#2463FF] rounded-xl text-white grid place-content-center text-[40px] absolute bottom-0">U</div>
+      <div className="flex flex-col gap-4 md:gap-6 w-full px-6 md:px-12 items-center mt-[100px]">
+        <div className="mt-40 grid grid-cols-7 gap-3 md:gap-20 translate-x-6">
+            <div className="w-[37px] h-[64px] md:w-[88px] md:h-[112px] bg-[#3d73fb] flex justify-center rounded-xl md:rounded-[30px] relative">
+                <div className="w-[30px] h-[58px] md:w-[78px] md:h-[105px] bg-[#2463FF] rounded-xl md:rounded-[30px] text-white grid place-content-center text-[40px] md:text-[64px] absolute bottom-0">U</div>
             </div>
-            <div className="w-[37px] h-[64px] bg-[#3d73fb] flex justify-center rounded-xl relative">
-                <div className="w-[30px] h-[58px] bg-[#2463FF] rounded-xl text-white grid place-content-center text-[40px] absolute bottom-0">N</div>
+            <div className="w-[37px] h-[64px] md:w-[88px] md:h-[112px] bg-[#3d73fb] flex justify-center rounded-xl md:rounded-[30px] relative">
+                <div className="w-[30px] h-[58px] md:w-[78px] md:h-[105px] bg-[#2463FF] rounded-xl md:rounded-[30px] text-white grid place-content-center text-[40px] md:text-[64px] absolute bottom-0">N</div> 
             </div>
-            <div className="w-[37px] h-[64px] bg-[#3d73fb] flex justify-center rounded-xl relative">
-                <div className="w-[30px] h-[58px] bg-[#2463FF] rounded-xl text-white grid place-content-center text-[40px] absolute bottom-0">I</div>
+            <div className="w-[37px] h-[64px] md:w-[88px] md:h-[112px] bg-[#3d73fb] flex justify-center rounded-xl md:rounded-[30px] relative">
+                <div className="w-[30px] h-[58px] md:w-[78px] md:h-[105px] bg-[#2463FF] rounded-xl md:rounded-[30px] text-white grid place-content-center text-[40px] md:text-[64px] absolute bottom-0">I</div>
             </div>
-            <div className="w-[37px] h-[64px] bg-[#2f1e83] flex justify-center rounded-xl relative">
-                <div className="w-[30px] h-[58px] bg-[#261676] rounded-xl text-white grid place-content-center text-[40px] absolute bottom-0"></div>
+            <div className="w-[37px] h-[64px] md:w-[88px] md:h-[112px] bg-[#2f1e83] flex justify-center rounded-xl md:rounded-[30px] relative">
+                <div className="w-[30px] h-[58px] md:w-[78px] md:h-[105px] bg-[#261676] rounded-xl md:rounded-[30px] text-white grid place-content-center text-[40px] md:text-[64px] absolute bottom-0"></div>
             </div>
-            <div className="w-[37px] h-[64px] bg-[#2f1e83] flex justify-center rounded-xl relative">
-                <div className="w-[30px] h-[58px] bg-[#261676] rounded-xl text-white grid place-content-center text-[40px] absolute bottom-0"></div>
+            <div className="w-[37px] h-[64px] md:w-[88px] md:h-[112px] bg-[#2f1e83] flex justify-center rounded-xl md:rounded-[30px] relative">
+                <div className="w-[30px] h-[58px] md:w-[78px] md:h-[105px] bg-[#261676] rounded-xl md:rounded-[30px] text-white grid place-content-center text-[40px] md:text-[64px] absolute bottom-0"></div>
             </div>
-            <div className="w-[37px] h-[64px] bg-[#3d73fb] flex justify-center rounded-xl relative">
-                <div className="w-[30px] h-[58px] bg-[#2463FF] rounded-xl text-white grid place-content-center text-[40px] absolute bottom-0">D</div>
+            <div className="w-[37px] h-[64px] md:w-[88px] md:h-[112px] bg-[#3d73fb] flex justify-center rounded-xl md:rounded-[30px] relative">
+                <div className="w-[30px] h-[58px] md:w-[78px] md:h-[105px] bg-[#2463FF] rounded-xl md:rounded-[30px] text-white grid place-content-center text-[40px] md:text-[64px] absolute bottom-0">D</div>
             </div>
         </div>
-        <div className="grid grid-cols-7 gap-3">
-            <div className="w-[37px] h-[64px] bg-[#2f1e83] flex justify-center rounded-xl relative">
-                <div className="w-[30px] h-[58px] bg-[#261676] rounded-xl text-white grid place-content-center text-[40px] absolute bottom-0"></div>
+        <div className="grid grid-cols-7 gap-3 md:gap-12">
+            <div className="w-[37px] h-[64px] md:w-[88px] md:h-[112px] bg-[#2f1e83] flex justify-center rounded-xl md:rounded-[30px] relative">
+                <div className="w-[30px] h-[58px] md:w-[78px] md:h-[105px] bg-[#261676] rounded-xl md:rounded-[30px] text-white grid place-content-center text-[40px] md:text-[64px] absolute bottom-0"></div>
             </div>
-            <div className="w-[37px] h-[64px] bg-[#3d73fb] flex justify-center rounded-xl relative">
-                <div className="w-[30px] h-[58px] bg-[#2463FF] rounded-xl text-white grid place-content-center text-[40px] absolute bottom-0">M</div>
+            <div className="w-[37px] h-[64px] md:w-[88px] md:h-[112px] bg-[#3d73fb] flex justify-center rounded-xl md:rounded-[30px] relative">
+                <div className="w-[30px] h-[58px] md:w-[78px] md:h-[105px] bg-[#2463FF] rounded-xl md:rounded-[30px] text-white grid place-content-center text-[40px] md:text-[64px] absolute bottom-0">M</div>
             </div>
-            <div className="w-[37px] h-[64px] bg-[#3d73fb] flex justify-center rounded-xl relative">
-                <div className="w-[30px] h-[58px] bg-[#2463FF] rounded-xl text-white grid place-content-center text-[40px] absolute bottom-0">E</div>
+            <div className="w-[37px] h-[64px] md:w-[88px] md:h-[112px] bg-[#3d73fb] flex justify-center rounded-xl md:rounded-[30px] relative">
+                <div className="w-[30px] h-[58px] md:w-[78px] md:h-[105px] bg-[#2463FF] rounded-xl md:rounded-[30px] text-white grid place-content-center text-[40px] md:text-[64px] absolute bottom-0">E</div>
             </div>
-            <div className="w-[37px] h-[64px] bg-[#2f1e83] flex justify-center rounded-xl relative">
-                <div className="w-[30px] h-[58px] bg-[#261676] rounded-xl text-white grid place-content-center text-[40px] absolute bottom-0"></div>
+            <div className="w-[37px] h-[64px] md:w-[88px] md:h-[112px] bg-[#2f1e83] flex justify-center rounded-xl md:rounded-[30px] relative">
+                <div className="w-[30px] h-[58px] md:w-[78px] md:h-[105px] bg-[#261676] rounded-xl md:rounded-[30px] text-white grid place-content-center text-[40px] md:text-[64px] absolute bottom-0"></div>
             </div>
-            <div className="w-[37px] h-[64px] bg-[#3d73fb] flex justify-center rounded-xl relative">
-                <div className="w-[30px] h-[58px] bg-[#2463FF] rounded-xl text-white grid place-content-center text-[40px] absolute bottom-0">I</div>
+            <div className="w-[37px] h-[64px] md:w-[88px] md:h-[112px] bg-[#3d73fb] flex justify-center rounded-xl md:rounded-[30px] relative">
+                <div className="w-[30px] h-[58px] md:w-[78px] md:h-[105px] bg-[#2463FF] rounded-xl md:rounded-[30px] text-white grid place-content-center text-[40px] md:text-[64px] absolute bottom-0">I</div>
             </div>
-            <div className="w-[37px] h-[64px] bg-[#3d73fb] flex justify-center rounded-xl relative">
-                <div className="w-[30px] h-[58px] bg-[#2463FF] rounded-xl text-white grid place-content-center text-[40px] absolute bottom-0">C</div>
+            <div className="w-[37px] h-[64px] md:w-[88px] md:h-[112px] bg-[#3d73fb] flex justify-center rounded-xl md:rounded-[30px] relative">
+                <div className="w-[30px] h-[58px] md:w-[78px] md:h-[105px] bg-[#2463FF] rounded-xl md:rounded-[30px] text-white grid place-content-center text-[40px] md:text-[64px] absolute bottom-0">C</div>
             </div>
-            <div className="w-[37px] h-[64px] bg-[#2f1e83] flex justify-center rounded-xl relative">
-                <div className="w-[30px] h-[58px] bg-[#261676] rounded-xl text-white grid place-content-center text-[40px] absolute bottom-0"></div>
+            <div className="w-[37px] h-[64px] md:w-[88px] md:h-[112px] bg-[#2f1e83] flex justify-center rounded-xl md:rounded-[30px] relative">
+                <div className="w-[30px] h-[58px] md:w-[78px] md:h-[105px] bg-[#261676] rounded-xl md:rounded-[30px] text-white grid place-content-center text-[40px] md:text-[64px] absolute bottom-0"></div>
             </div>
         </div>
       </div>
