@@ -12,7 +12,7 @@ const GamePage = () => {
         </div>
         <div className="flex justify-center items-center gap-4">
             <div className="w-[57px] h-[16px] bg-white rounded-3xl flex items-center">
-                <div className="bg-[#261676] w-[100%] h-[8px] rounded-3xl mx-1"></div>
+                <div className="bg-[#261676] w-[40%] h-[8px] rounded-3xl mx-1"></div>
             </div>
             <img src="/assets/images/icon-heart.svg" width="26px" alt="Heart icon" />
         </div>
@@ -29,19 +29,19 @@ const GamePage = () => {
             <div className="w-[37px] h-[64px] bg-[#3d73fb] flex justify-center rounded-xl relative">
                 <div className="w-[30px] h-[58px] bg-[#2463FF] rounded-xl text-white grid place-content-center text-[40px] absolute bottom-0">I</div>
             </div>
-            <div className="w-[37px] h-[64px] bg-[#3d73fb] flex justify-center rounded-xl relative">
-                <div className="w-[30px] h-[58px] bg-[#2463FF] rounded-xl text-white grid place-content-center text-[40px] absolute bottom-0">T</div>
+            <div className="w-[37px] h-[64px] bg-[#2f1e83] flex justify-center rounded-xl relative">
+                <div className="w-[30px] h-[58px] bg-[#261676] rounded-xl text-white grid place-content-center text-[40px] absolute bottom-0"></div>
             </div>
-            <div className="w-[37px] h-[64px] bg-[#3d73fb] flex justify-center rounded-xl relative">
-                <div className="w-[30px] h-[58px] bg-[#2463FF] rounded-xl text-white grid place-content-center text-[40px] absolute bottom-0">E</div>
+            <div className="w-[37px] h-[64px] bg-[#2f1e83] flex justify-center rounded-xl relative">
+                <div className="w-[30px] h-[58px] bg-[#261676] rounded-xl text-white grid place-content-center text-[40px] absolute bottom-0"></div>
             </div>
             <div className="w-[37px] h-[64px] bg-[#3d73fb] flex justify-center rounded-xl relative">
                 <div className="w-[30px] h-[58px] bg-[#2463FF] rounded-xl text-white grid place-content-center text-[40px] absolute bottom-0">D</div>
             </div>
         </div>
         <div className="grid grid-cols-7 gap-3">
-            <div className="w-[37px] h-[64px] bg-[#3d73fb] flex justify-center rounded-xl relative">
-                <div className="w-[30px] h-[58px] bg-[#2463FF] rounded-xl text-white grid place-content-center text-[40px] absolute bottom-0">A</div>
+            <div className="w-[37px] h-[64px] bg-[#2f1e83] flex justify-center rounded-xl relative">
+                <div className="w-[30px] h-[58px] bg-[#261676] rounded-xl text-white grid place-content-center text-[40px] absolute bottom-0"></div>
             </div>
             <div className="w-[37px] h-[64px] bg-[#3d73fb] flex justify-center rounded-xl relative">
                 <div className="w-[30px] h-[58px] bg-[#2463FF] rounded-xl text-white grid place-content-center text-[40px] absolute bottom-0">M</div>
@@ -49,8 +49,8 @@ const GamePage = () => {
             <div className="w-[37px] h-[64px] bg-[#3d73fb] flex justify-center rounded-xl relative">
                 <div className="w-[30px] h-[58px] bg-[#2463FF] rounded-xl text-white grid place-content-center text-[40px] absolute bottom-0">E</div>
             </div>
-            <div className="w-[37px] h-[64px] bg-[#3d73fb] flex justify-center rounded-xl relative">
-                <div className="w-[30px] h-[58px] bg-[#2463FF] rounded-xl text-white grid place-content-center text-[40px] absolute bottom-0">R</div>
+            <div className="w-[37px] h-[64px] bg-[#2f1e83] flex justify-center rounded-xl relative">
+                <div className="w-[30px] h-[58px] bg-[#261676] rounded-xl text-white grid place-content-center text-[40px] absolute bottom-0"></div>
             </div>
             <div className="w-[37px] h-[64px] bg-[#3d73fb] flex justify-center rounded-xl relative">
                 <div className="w-[30px] h-[58px] bg-[#2463FF] rounded-xl text-white grid place-content-center text-[40px] absolute bottom-0">I</div>
@@ -58,8 +58,8 @@ const GamePage = () => {
             <div className="w-[37px] h-[64px] bg-[#3d73fb] flex justify-center rounded-xl relative">
                 <div className="w-[30px] h-[58px] bg-[#2463FF] rounded-xl text-white grid place-content-center text-[40px] absolute bottom-0">C</div>
             </div>
-            <div className="w-[37px] h-[64px] bg-[#3d73fb] flex justify-center rounded-xl relative">
-                <div className="w-[30px] h-[58px] bg-[#2463FF] rounded-xl text-white grid place-content-center text-[40px] absolute bottom-0">A</div>
+            <div className="w-[37px] h-[64px] bg-[#2f1e83] flex justify-center rounded-xl relative">
+                <div className="w-[30px] h-[58px] bg-[#261676] rounded-xl text-white grid place-content-center text-[40px] absolute bottom-0"></div>
             </div>
         </div>
       </div>
