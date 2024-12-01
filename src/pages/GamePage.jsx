@@ -1,6 +1,6 @@
 const GamePage = () => {
   return (
-    <div className="bg-[url(/assets/images/background-mobile.svg)] bg-cover bg-center h-screen relative">
+    <div className="bg-[url(/assets/images/background-mobile.svg)] bg-cover bg-center h-screen">
       <div class="absolute inset-0 bg-black/50"></div>
       {/* Head */}
       <div className="absolute top-[40px] px-6 flex justify-between w-full">
@@ -64,8 +64,8 @@ const GamePage = () => {
         </div>
       </div>
       {/* Letters */}
-      <div className="w-full px-6 mt-[130px] grid gap-4">
-        <div className="grid grid-cols-9 z-10">
+      <div className="w-full px-6 mt-[130px] grid gap-6">
+        <div className="grid grid-cols-9 gap-2 z-10">
             <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center opacity-40"></div>
             <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center">B</div>
             <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center">C</div>
@@ -76,7 +76,7 @@ const GamePage = () => {
             <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center">H</div>
             <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center">I</div>
         </div>
-        <div className="grid grid-cols-9 z-10">
+        <div className="grid grid-cols-9 gap-2 z-10">
             <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center">J</div>
             <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center">K</div>
             <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center">L</div>
@@ -87,7 +87,7 @@ const GamePage = () => {
             <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center">Q</div>
             <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center opacity-40"></div>
         </div>
-        <div className="grid grid-cols-9 translate-x-6 z-10">
+        <div className="grid grid-cols-9 translate-x-6 gap-2 z-10">
             <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center">S</div>
             <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center opacity-40"></div>
             <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center">U</div>
