@@ -7,8 +7,8 @@ const App = () => {
   return (
     <div>
       {/* <Homepage /> */}
-      <HowToPlayPage />
-      {/* <Categories /> */}
+      {/* <HowToPlayPage /> */}
+      <Categories />
       {/* <GamePage /> */}
     </div>
   )
