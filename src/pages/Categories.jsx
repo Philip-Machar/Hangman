@@ -3,7 +3,7 @@ import ReturnButton from "../components/ReturnButton"
 const Categories = () => {
   return (
     <div className="bg-[url(/assets/images/background-mobile.svg)] bg-cover bg-center h-screen grid place-content-center relative">
-      <div class="absolute inset-0 bg-black/20"></div>
+      <div class="absolute inset-0 bg-black/50"></div>
       <div className="w-full absolute top-[40px] flex justify-between px-6">
         <ReturnButton />
         <img src="/assets/images/pick-category-icon.png" alt="Pic caterogy icon" />
