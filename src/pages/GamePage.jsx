@@ -27,7 +27,7 @@ const GamePage = () => {
       </div>
       {/* Guesses */}
       <div className="flex flex-col gap-4 md:gap-6 w-full px-6 md:px-12 items-center mt-[100px]">
-        <div className="mt-40 grid grid-cols-7 gap-3 md:gap-20 translate-x-6">
+        <div className="mt-40 grid grid-cols-7 gap-3 translate-x-6 md:translate-x-12">
             <div className="w-[37px] h-[64px] md:w-[88px] md:h-[112px] bg-[#3d73fb] flex justify-center rounded-xl md:rounded-[30px] relative">
                 <div className="w-[30px] h-[58px] md:w-[78px] md:h-[105px] bg-[#2463FF] rounded-xl md:rounded-[30px] text-white grid place-content-center text-[40px] md:text-[64px] absolute bottom-0">U</div>
             </div>
@@ -47,7 +47,7 @@ const GamePage = () => {
                 <div className="w-[30px] h-[58px] md:w-[78px] md:h-[105px] bg-[#2463FF] rounded-xl md:rounded-[30px] text-white grid place-content-center text-[40px] md:text-[64px] absolute bottom-0">D</div>
             </div>
         </div>
-        <div className="grid grid-cols-7 gap-3 md:gap-12">
+        <div className="grid grid-cols-7 gap-3">
             <div className="w-[37px] h-[64px] md:w-[88px] md:h-[112px] bg-[#2f1e83] flex justify-center rounded-xl md:rounded-[30px] relative">
                 <div className="w-[30px] h-[58px] md:w-[78px] md:h-[105px] bg-[#261676] rounded-xl md:rounded-[30px] text-white grid place-content-center text-[40px] md:text-[64px] absolute bottom-0"></div>
             </div>
@@ -72,38 +72,38 @@ const GamePage = () => {
         </div>
       </div>
       {/* Letters */}
-      <div className="w-full px-6 mt-[130px] grid gap-6">
-        <div className="grid grid-cols-9 gap-2 z-10">
-            <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center opacity-40 cursor-pointer"></div>
-            <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center cursor-pointer">B</div>
-            <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center cursor-pointer">C</div>
-            <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center cursor-pointer">D</div>
-            <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center opacity-40 cursor-pointer"></div>
-            <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center cursor-pointer">F</div>
-            <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center cursor-pointer">G</div>
-            <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center cursor-pointer">H</div>
-            <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center cursor-pointer">I</div>
+      <div className="w-full px-6 md:px-12 mt-[130px] grid gap-6">
+        <div className="grid grid-cols-9 z-10">
+            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center opacity-40 cursor-pointer">A</div>
+            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">B</div>
+            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">C</div>
+            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">D</div>
+            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center opacity-40 cursor-pointer">E</div>
+            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">F</div>
+            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">G</div>
+            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">H</div>
+            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">I</div>
         </div>
-        <div className="grid grid-cols-9 gap-2 z-10">
-            <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center cursor-pointer">J</div>
-            <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center cursor-pointer">K</div>
-            <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center cursor-pointer">L</div>
-            <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center cursor-pointer">M</div>
-            <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center cursor-pointer">N</div>
-            <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center cursor-pointer">O</div>
-            <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center cursor-pointer">P</div>
-            <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center cursor-pointer">Q</div>
-            <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center opacity-40 cursor-pointer"></div>
+        <div className="grid grid-cols-9 z-10">
+            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">J</div>
+            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">K</div>
+            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">L</div>
+            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">M</div>
+            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">N</div>
+            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">O</div>
+            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">P</div>
+            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">Q</div>
+            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center opacity-40 cursor-pointer">R</div>
         </div>
-        <div className="grid grid-cols-9 translate-x-6 gap-2 z-10">
-            <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center cursor-pointer">S</div>
-            <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center opacity-40 cursor-pointer"></div>
-            <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center cursor-pointer">U</div>
-            <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center cursor-pointer">V</div>
-            <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center cursor-pointer">W</div>
-            <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center cursor-pointer">X</div>
-            <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center cursor-pointer">Y</div>
-            <div className="w-[29px] h-[56px] bg-white text-[#261676] text-[24px] rounded-lg grid place-content-center cursor-pointer">Z</div>
+        <div className="grid grid-cols-9 translate-x-6 md:translate-x-9 z-10">
+            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">S</div>
+            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center opacity-40 cursor-pointer">T</div>
+            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">U</div>
+            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">V</div>
+            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">W</div>
+            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">X</div>
+            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">Y</div>
+            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">Z</div>
         </div>
       </div>
     </div>
