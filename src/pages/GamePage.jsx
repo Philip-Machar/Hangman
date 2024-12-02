@@ -74,11 +74,11 @@ const GamePage = () => {
       {/* Letters */}
       <div className="w-full px-6 md:px-12 mt-[130px] grid gap-6">
         <div className="grid grid-cols-9 z-10">
-            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center opacity-40 cursor-pointer">A</div>
+            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer opacity-40">A</div>
             <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">B</div>
             <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">C</div>
             <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">D</div>
-            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center opacity-40 cursor-pointer">E</div>
+            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer opacity-40">E</div>
             <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">F</div>
             <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">G</div>
             <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">H</div>
@@ -93,11 +93,11 @@ const GamePage = () => {
             <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">O</div>
             <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">P</div>
             <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">Q</div>
-            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center opacity-40 cursor-pointer">R</div>
+            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer opacity-40">R</div>
         </div>
         <div className="grid grid-cols-9 translate-x-6 md:translate-x-9 z-10">
             <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">S</div>
-            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center opacity-40 cursor-pointer">T</div>
+            <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer opacity-40">T</div>
             <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">U</div>
             <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">V</div>
             <div className="w-[29px] h-[56px] md:w-[64px] md:h-[84px] bg-white text-[#261676] text-[24px] md:text-[42px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer">W</div>
