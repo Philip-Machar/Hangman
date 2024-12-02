@@ -2,16 +2,16 @@ import ReturnButton from "../components/ReturnButton"
 
 const HowToPlayPage = () => {
   return (
-    <div className="bg-[url(/assets/images/background-mobile.svg)] md:bg-[url(/assets/images/background-tablet.svg)] bg-cover bg-center h-screen grid place-content-center relative">
+    <div className="bg-[url(/assets/images/background-mobile.svg)] md:bg-[url(/assets/images/background-tablet.svg)] lg:bg-[url(/assets/images/background-desktop.svg)] bg-cover bg-center h-screen grid place-content-center relative">
       <div class="absolute inset-0 bg-black/50"></div>
-      <div className="w-full absolute top-[40px] md:top-[78px] flex justify-between px-6 md:px-12">
+      <div className="w-full absolute top-[40px] md:top-[78px] flex justify-between px-6 md:px-12 lg:px-24 lg:mb-24">
         <ReturnButton />
         <img src="/assets/images/icon-how-to-play.png" alt="How to play heading" className="md:w-[343px]" />
         <div className="hidden md:block"></div>
       </div>
-      <div className="px-6 md:px-12 flex flex-col gap-6 mt-20 tracking-wider">
+      <div className="px-6 md:px-12 lg:px-24 flex flex-col lg:flex-row gap-6 mt-20 tracking-wider">
         <div className="bg-white rounded-3xl p-8 md:p-10 grid place-content-center gap-2 z-10">
-            <div className="flex text-2xl gap-4">
+            <div className="flex text-2xl gap-4 lg:mb-4">
                 <div className="text-[#2463FF] md:text-[40px]">01</div>
                 <h1 className="text-[#261676] md:text-[40px]">CHOOSE A CATEGORY</h1>
             </div>
@@ -22,7 +22,7 @@ const HowToPlayPage = () => {
             </p>
         </div>
         <div className="bg-white rounded-3xl p-8 md:p-10 grid place-content-center gap-2 px-8 z-10">
-            <div className="flex text-2xl gap-4">
+            <div className="flex text-2xl gap-4 lg:mb-4">
                 <div className="text-[#2463FF] md:text-[40px]">02</div>
                 <h1 className="text-[#261676] md:text-[40px]">GUESS LETTERS</h1>
             </div>
@@ -32,7 +32,7 @@ const HowToPlayPage = () => {
             </p>
         </div>
         <div className="bg-white rounded-3xl p-8 md:p-10 grid place-content-center gap-2 px-8 z-10">
-            <div className="flex text-2xl gap-4">
+            <div className="flex text-2xl gap-4 lg:mb-4">
                 <div className="text-[#2463FF] md:text-[40px]">03</div>
                 <h1 className="text-[#261676] md:text-[40px]">WIN OR LOSE</h1>
             </div>
