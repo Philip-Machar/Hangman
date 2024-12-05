@@ -36,7 +36,7 @@ const HowToPlayPage = () => {
         />
         <div className="hidden md:block"></div>
       </div>
-      <div className="px-6 md:px-12 lg:px-24 flex flex-col lg:flex-row gap-6 mt-20 tracking-wider">
+      <div className="px-6 md:px-24 lg:px-24 flex flex-col lg:flex-row gap-6 mt-20 tracking-wider">
         <div className="bg-white rounded-3xl p-6 md:p-10 grid place-content-center gap-2 z-10">
           <div className="flex text-2xl gap-4 lg:mb-4">
             <div className="text-[#2463FF] md:text-[40px]">01</div>

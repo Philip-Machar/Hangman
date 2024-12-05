@@ -10,23 +10,23 @@ const Categories = () => {
         <div className="hidden md:block"></div>
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div className="bg-[#3d73fb] w-[276px] h-[65px] md:w-[324px] md:h-[182px] relative flex justify-center rounded-3xl">
-            <div className="bg-[#2463FF] w-[270px] h-[60px] md:w-[316px] md:h-[173px] absolute bottom-0 rounded-3xl grid place-content-center text-white text-2xl md:text-[42px] tracking-wider">MOVIES</div>
+        <div className="bg-[#3d73fb] w-[276px] h-[65px] md:w-[260px] md:h-[160px] relative flex justify-center rounded-3xl">
+            <div className="bg-[#2463FF] w-[270px] h-[60px] md:w-[250px] md:h-[150px] absolute bottom-0 rounded-3xl grid place-content-center text-white text-2xl md:text-[36px] tracking-wider">MOVIES</div>
         </div>
-        <div className="bg-[#3d73fb] w-[276px] h-[65px] md:w-[324px] md:h-[182px] relative flex justify-center rounded-3xl">
-            <div className="bg-[#2463FF] w-[276px] h-[65px] md:w-[316px] md:h-[173px] absolute bottom-0 rounded-3xl grid place-content-center text-white text-2xl md:text-[42px] tracking-wider">TV SHOWS</div>
+        <div className="bg-[#3d73fb] w-[276px] h-[65px] md:w-[260px] md:h-[160px] relative flex justify-center rounded-3xl">
+            <div className="bg-[#2463FF] w-[276px] h-[65px] md:w-[250px] md:h-[150px] absolute bottom-0 rounded-3xl grid place-content-center text-white text-2xl md:text-[36px] tracking-wider">TV SHOWS</div>
         </div>
-        <div className="bg-[#3d73fb] w-[276px] h-[65px] md:w-[324px] md:h-[182px] relative flex justify-center rounded-3xl">
-            <div className="bg-[#2463FF] w-[276px] h-[65px] md:w-[316px] md:h-[173px] absolute bottom-0 rounded-3xl grid place-content-center text-white text-2xl md:text-[42px] tracking-wider">COUNTRIES</div>
+        <div className="bg-[#3d73fb] w-[276px] h-[65px] md:w-[260px] md:h-[160px] relative flex justify-center rounded-3xl">
+            <div className="bg-[#2463FF] w-[276px] h-[65px] md:w-[250px] md:h-[150px] absolute bottom-0 rounded-3xl grid place-content-center text-white text-2xl md:text-[36px] tracking-wider">COUNTRIES</div>
         </div>
-        <div className="bg-[#3d73fb] w-[276px] h-[65px] md:w-[324px] md:h-[182px] relative flex justify-center rounded-3xl">
-            <div className="bg-[#2463FF] w-[276px] h-[65px] md:w-[316px] md:h-[173px] absolute bottom-0 rounded-3xl grid place-content-center text-white text-2xl md:text-[42px] tracking-wider">CAPITAL CITIES</div>
+        <div className="bg-[#3d73fb] w-[276px] h-[65px] md:w-[260px] md:h-[160px] relative flex justify-center rounded-3xl">
+            <div className="bg-[#2463FF] w-[276px] h-[65px] md:w-[250px] md:h-[150px] absolute bottom-0 rounded-3xl grid place-content-center text-white text-2xl md:text-[36px] tracking-wider">CAPITAL CITIES</div>
         </div>
-        <div className="bg-[#3d73fb] w-[276px] h-[65px] md:w-[324px] md:h-[182px] relative flex justify-center rounded-3xl">
-            <div className="bg-[#2463FF] w-[276px] h-[65px] md:w-[316px] md:h-[173px] absolute bottom-0 rounded-3xl grid place-content-center text-white text-2xl md:text-[42px] tracking-wider">ANIMALS</div>
+        <div className="bg-[#3d73fb] w-[276px] h-[65px] md:w-[260px] md:h-[160px] relative flex justify-center rounded-3xl">
+            <div className="bg-[#2463FF] w-[276px] h-[65px] md:w-[250px] md:h-[150px] absolute bottom-0 rounded-3xl grid place-content-center text-white text-2xl md:text-[36px] tracking-wider">ANIMALS</div>
         </div>
-        <div className="bg-[#3d73fb] w-[276px] h-[65px] md:w-[324px] md:h-[182px] relative flex justify-center rounded-3xl">
-            <div className="bg-[#2463FF] w-[276px] h-[65px] md:w-[316px] md:h-[173px] absolute bottom-0 rounded-3xl grid place-content-center text-white text-2xl md:text-[42px] tracking-wider">SPORTS</div>
+        <div className="bg-[#3d73fb] w-[276px] h-[65px] md:w-[260px] md:h-[160px] relative flex justify-center rounded-3xl">
+            <div className="bg-[#2463FF] w-[276px] h-[65px] md:w-[250px] md:h-[150px] absolute bottom-0 rounded-3xl grid place-content-center text-white text-2xl md:text-[36px] tracking-wider">SPORTS</div>
         </div>
       </div>
     </div>
