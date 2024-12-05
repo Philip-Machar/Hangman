@@ -30,7 +30,7 @@ const HowToPlayPage = () => {
         <img
           src="/assets/images/icon-how-to-play.png"
           alt="How to play heading"
-          className="md:w-[343px]"
+          className="w-[180px] md:w-[343px]"
         />
         <div className="hidden md:block"></div>
       </div>
