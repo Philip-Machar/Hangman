@@ -5,11 +5,11 @@ import YouWin from "../components/YouWin"
 const GamePage = () => {
   return (
     <div className="bg-[url(/assets/images/background-mobile.svg)] md:bg-[url(/assets/images/background-tablet.svg)] lg:bg-[url(/assets/images/background-desktop.svg)] bg-cover bg-center h-screen relative flex flex-col items-center">
-      <div class="absolute inset-0 bg-black/50"></div>
-      {/* <div class="absolute inset-0 bg-black/60 z-20"></div> */}
+      {/* <div class="absolute inset-0 bg-black/50"></div> */}
+      <div class="absolute inset-0 bg-black/60 z-20"></div>
       {/* <Paused /> */}
       {/* <YouWin /> */}
-      {/* <YouLose /> */}
+      <YouLose />
       {/* Head */}
       <div className="absolute top-[30px] md:top-[78px] lg:top-[50px] px-6 md:px-12 flex justify-between w-full">
         <div className="flex items-center gap-4 md:gap-8">
