@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 const PlayButton = () => {
   return (
     <div className="absolute top-[70px] md:top-[105px] lg:top-[90px]">

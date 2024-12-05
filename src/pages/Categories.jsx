@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import ReturnButton from "../components/ReturnButton"
 
 const Categories = () => {
@@ -5,7 +6,7 @@ const Categories = () => {
     <div className="bg-[url(/assets/images/background-mobile.svg)] md:bg-[url(/assets/images/background-tablet.svg)] lg:bg-[url(/assets/images/background-desktop.svg)] bg-cover bg-center h-screen grid place-content-center relative">
       <div class="absolute inset-0 bg-black/50"></div>
       <div className="w-full absolute top-[30px] md:top-[78px] lg:top-[50px] flex justify-between px-6 md:px-12 lg:px-24">
-        <ReturnButton />
+        <Link to="/"><ReturnButton /></Link>
         <img src="/assets/images/pick-category-icon.png" alt="Pic caterogy icon" className="md:w-[343px]" />
         <div className="hidden md:block"></div>
       </div>

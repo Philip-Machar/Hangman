@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import ReturnButton from "../components/ReturnButton";
+import { Link } from "react-router-dom";
 
 const HowToPlayPage = () => {
   useEffect(() => {
@@ -25,7 +26,7 @@ const HowToPlayPage = () => {
     >
       <div className="absolute inset-0 bg-black/50"></div>
       <div className="w-full absolute top-[30px] md:top-[78px] lg:top-[50px] flex justify-between px-6 md:px-12 lg:px-24 lg:mb-24">
-        <ReturnButton />
+        <Link to="/"><ReturnButton /></Link>
         <img
           src="/assets/images/icon-how-to-play.png"
           alt="How to play heading"
