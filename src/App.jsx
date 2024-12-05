@@ -16,8 +16,6 @@ const App = () => {
     setCategory(clickedCategory.name);
   };
 
-  console.log(category);
-
   const routes = [
     { path: "/", element: <Homepage />},
     { path: "/how-to-play", element: <HowToPlayPage />},
