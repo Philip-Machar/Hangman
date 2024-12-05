@@ -7,7 +7,7 @@ const Categories = ({categories, clickedCategory}) => {
       <div className="absolute inset-0 bg-black/50"></div>
       <div className="w-full absolute top-[30px] md:top-[78px] lg:top-[50px] flex justify-between px-6 md:px-12 lg:px-24">
         <Link to="/"><ReturnButton /></Link>
-        <img src="/assets/images/pick-category-icon.png" alt="Pic caterogy icon" className="md:w-[343px]" />
+        <img src="/assets/images/pick-category-icon.png" alt="Pic caterogy icon" className="w-[180px] md:w-[343px]" />
         <div className="hidden md:block"></div>
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
