@@ -1,19 +1,26 @@
+import { useState } from "react"
 import Paused from "../components/Paused"
 import YouLose from "../components/YouLose"
 import YouWin from "../components/YouWin"
 
 const GamePage = ({ category }) => {
+  const [isPaused, setIsPaused] = useState(false);
+  
+  const handleIsPaused = () => {
+    setIsPaused(true);
+  };
+
   return (
     <div className="bg-[url(/assets/images/background-mobile.svg)] md:bg-[url(/assets/images/background-tablet.svg)] lg:bg-[url(/assets/images/background-desktop.svg)] bg-cover bg-center h-screen relative flex flex-col items-center">
-      <div className="absolute inset-0 bg-black/50"></div>
-      {/* <div className="absolute inset-0 bg-black/60 z-20"></div> */}
-      {/* <Paused /> */}
+      {!isPaused && <div className="absolute inset-0 bg-black/50"></div>}
+      {isPaused && <div className="absolute inset-0 bg-black/60 z-20"></div>}
+      {isPaused && <Paused setIsPaused={setIsPaused} />}
       {/* <YouWin /> */}
       {/* <YouLose /> */}
       {/* Head */}
       <div className="absolute top-[30px] md:top-[78px] lg:top-[50px] px-6 md:px-12 flex justify-between w-full">
         <div className="flex items-center gap-4 md:gap-8">
-            <div className="bg-gradient-to-b from-[#FE71FE] to-[#7199FF] w-[40px] h-[40px] md:w-[64px] md:h-[64px] rounded-full flex justify-center items-center relative">
+            <div onClick={handleIsPaused} className="bg-gradient-to-b from-[#FE71FE] to-[#7199FF] w-[40px] h-[40px] md:w-[64px] md:h-[64px] rounded-full flex justify-center items-center relative">
                 <img src="/assets/images/icon-menu.svg" alt="back icon" className="w-[17px] md:w-[25px]" />
             </div>
             <div className="text-white text-[36px] md:text-[48px] tracking-wider">{category}</div>
