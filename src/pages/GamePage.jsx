@@ -17,7 +17,9 @@ const GamePage = ({ category }) => {
 
   //letter clicked
   const handleClickedLetter = (id) => {
-    const clickedLetter = letters.find((letter) => letter.id === id)?.letter;
+    const clickedLetterObject = letters.find((letter) => letter.id === id);
+    clickedLetterObject.opacity = true;
+    const clickedLetter = clickedLetterObject?.letter;
 
     if (movie.includes(clickedLetter)) {
         setGuessedLetters((prev) => [...new Set([...prev, clickedLetter])]);
@@ -78,7 +80,7 @@ const GamePage = ({ category }) => {
         </div>
         <div className="flex justify-center items-center gap-4 md:gap-8">
             <div className="w-[57px] h-[16px] md:w-[160px] md:h-[31px] bg-white rounded-3xl flex items-center">
-                <div style={{ width: `${health}%`}} className="bg-[#261676] h-[8px] md:w-[40%] md:h-[13px] rounded-3xl mx-1 md:mx-3"></div>
+                <div style={{ width: `${health}%`}} className={`${health <= 30 ? "bg-red-500" : "bg-[#261676]"} h-[8px] md:w-[40%] md:h-[13px] rounded-3xl mx-1 md:mx-3`}></div>
             </div>
             <img src="/assets/images/icon-heart.svg" alt="Heart icon" className="w-[26px] md:w-[53px]"/>
         </div>
@@ -107,7 +109,7 @@ const GamePage = ({ category }) => {
                 {/* Dynamically populate letters */}
                 {
                     letters.slice(rowIndex * 9, rowIndex * 9 + 9).map(({ id, letter, opacity }) => (
-                        <div key={id} onClick={() => handleClickedLetter(id)} className={`w-[29px] h-[45px] md:w-[64px] md:h-[84px] lg:w-[52px] lg:h-[67px] bg-white text-[#261676] text-[24px] md:text-[42px] lg:text-[36px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer ${opacity ? "opacity-40" : ""}`}>{letter}</div>
+                        <div key={id} onClick={() => handleClickedLetter(id)} className={`w-[29px] h-[45px] md:w-[64px] md:h-[84px] lg:w-[52px] lg:h-[67px] bg-white text-[#261676] text-[24px] md:text-[42px] lg:text-[36px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer ${opacity ? "opacity-40 pointer-events-none" : ""}`}>{letter}</div>
                     ))
                 }
             </div>
