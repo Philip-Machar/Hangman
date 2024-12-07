@@ -1,14 +1,51 @@
-import { useState } from "react"
-import Paused from "../components/Paused"
-import YouLose from "../components/YouLose"
-import YouWin from "../components/YouWin"
+import { useEffect, useState } from "react";
+import Paused from "../components/Paused";
+import YouLose from "../components/YouLose";
+import YouWin from "../components/YouWin";
 
 const GamePage = ({ category }) => {
   const [isPaused, setIsPaused] = useState(false);
+  const [life, setLife] = useState(100);
+  const [movie, setMovie] = useState([]);
   
+  //pauses the game
   const handleIsPaused = () => {
     setIsPaused(true);
   };
+
+ //fetching data based on category chosen
+ useEffect(() => {
+    if (category === "MOVIES"){
+        const getMovie = async () => {
+            const pages = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            const randomPageIndex = Math.floor(Math.random() * pages.length);
+            const page = pages[randomPageIndex];
+            try {
+                const res = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=52d04f0ad27d273868996d5c327a9b17&page=${page}`);
+                const movies = await res.json();
+
+                const refinedMovies = movies.results.filter((movie) => {
+                    const movieTitle = movie.title;
+
+                    if (movieTitle.split(" ").length < 2) {
+                        if (movieTitle.length < 10) {
+                            return movieTitle
+                        }
+                    }
+                });
+
+                const refinedMoviesTitles = refinedMovies.map((refinedMovie) => refinedMovie.title);
+                const singlemovie = refinedMoviesTitles[Math.floor(Math.random() * refinedMoviesTitles.length)].split("");
+                setMovie(singlemovie);
+
+                console.log(singlemovie);
+            } catch (error) {
+                console.error(`Error: ${error}`);
+            };
+        };
+        getMovie();
+    };
+ }, []);
 
   return (
     <div className="bg-[url(/assets/images/background-mobile.svg)] md:bg-[url(/assets/images/background-tablet.svg)] lg:bg-[url(/assets/images/background-desktop.svg)] bg-cover bg-center h-screen relative flex flex-col items-center">
@@ -23,19 +60,28 @@ const GamePage = ({ category }) => {
             <div onClick={handleIsPaused} className="bg-gradient-to-b from-[#FE71FE] to-[#7199FF] w-[40px] h-[40px] md:w-[64px] md:h-[64px] rounded-full flex justify-center items-center relative">
                 <img src="/assets/images/icon-menu.svg" alt="back icon" className="w-[17px] md:w-[25px]" />
             </div>
-            <div className="text-white text-[36px] md:text-[48px] tracking-wider">{category}</div>
+            <div className="text-white text-[26px] md:text-[48px] tracking-wider">{category}</div>
         </div>
         <div className="flex justify-center items-center gap-4 md:gap-8">
             <div className="w-[57px] h-[16px] md:w-[160px] md:h-[31px] bg-white rounded-3xl flex items-center">
-                <div className="bg-[#261676] w-[40%] h-[8px] md:w-[40%] md:h-[13px] rounded-3xl mx-1 md:mx-3"></div>
+                <div style={{ width: `${life}%`}} className="bg-[#261676] h-[8px] md:w-[40%] md:h-[13px] rounded-3xl mx-1 md:mx-3"></div>
             </div>
             <img src="/assets/images/icon-heart.svg" alt="Heart icon" className="w-[26px] md:w-[53px]"/>
         </div>
       </div>
       {/* Guesses */}
       <div className="flex items-center flex-col gap-2 md:gap-6 w-full px-6 md:px-12 md:mt-[100px] lg:mt-[20px]">
-        <div className="mt-40 grid grid-cols-7 gap-2 justify-center">
-            <div className="w-[29px] h-[45px] md:w-[64px] md:h-[84px] lg:w-[52px] lg:h-[67px] bg-[#3d73fb] flex justify-center rounded-xl md:rounded-[24px] lg:rounded-[18px] relative">
+        <div className="mt-40 grid gap-2 justify-center" style={{ gridTemplateColumns: `repeat(${movie.length}, minmax(0, 1fr))` }}>
+            {
+                movie.map((letter, index) => {
+                    return (
+                        <div key={index} className="w-[29px] h-[45px] md:w-[64px] md:h-[84px] lg:w-[52px] lg:h-[67px] bg-[#2f1e83] flex justify-center rounded-xl md:rounded-[24px] lg:rounded-[18px] relative">
+                            <div className="w-[25px] h-[41px] md:w-[58px] md:h-[78px] lg:w-[45px] lg:h-[62px] bg-[#261676] rounded-xl md:rounded-[24px] lg:rounded-[18px] text-white grid place-content-center text-[28px] md:text-[48px] lg:text-[36px] absolute bottom-0">{letter}</div>
+                        </div>
+                    )
+                })
+            }
+            {/* <div className="w-[29px] h-[45px] md:w-[64px] md:h-[84px] lg:w-[52px] lg:h-[67px] bg-[#3d73fb] flex justify-center rounded-xl md:rounded-[24px] lg:rounded-[18px] relative">
                 <div className="w-[25px] h-[41px] md:w-[58px] md:h-[78px] lg:w-[45px] lg:h-[62px] bg-[#2463FF] rounded-xl md:rounded-[24px] lg:rounded-[18px] text-white grid place-content-center text-[28px] md:text-[48px] lg:text-[36px] absolute bottom-0">U</div>
             </div>
             <div className="w-[29px] h-[45px] md:w-[64px] md:h-[84px] lg:w-[52px] lg:h-[67px] bg-[#3d73fb] flex justify-center rounded-xl md:rounded-[24px] lg:rounded-[18px] relative">
@@ -47,15 +93,12 @@ const GamePage = ({ category }) => {
             <div className="w-[29px] h-[45px] md:w-[64px] md:h-[84px] lg:w-[52px] lg:h-[67px] bg-[#2f1e83] flex justify-center rounded-xl md:rounded-[24px] lg:rounded-[18px] relative">
                 <div className="w-[25px] h-[41px] md:w-[58px] md:h-[78px] lg:w-[45px] lg:h-[62px] bg-[#261676] rounded-xl md:rounded-[24px] lg:rounded-[18px] text-white grid place-content-center text-[28px] md:text-[48px] lg:text-[36px] absolute bottom-0"></div>
             </div>
-            <div className="w-[29px] h-[45px] md:w-[64px] md:h-[84px] lg:w-[52px] lg:h-[67px] bg-[#2f1e83] flex justify-center rounded-xl md:rounded-[24px] lg:rounded-[18px] relative">
-                <div className="w-[25px] h-[41px] md:w-[58px] md:h-[78px] lg:w-[45px] lg:h-[62px] bg-[#261676] rounded-xl md:rounded-[24px] lg:rounded-[18px] text-white grid place-content-center text-[28px] md:text-[48px] lg:text-[36px] absolute bottom-0"></div>
-            </div>
             <div className="w-[29px] h-[45px] md:w-[64px] md:h-[84px] lg:w-[52px] lg:h-[67px] bg-[#3d73fb] flex justify-center rounded-xl md:rounded-[24px] lg:rounded-[18px] relative">
                 <div className="w-[25px] h-[41px] md:w-[58px] md:h-[78px] lg:w-[45px] lg:h-[62px] bg-[#2463FF] rounded-xl md:rounded-[24px] lg:rounded-[18px] text-white grid place-content-center text-[28px] md:text-[48px] lg:text-[36px] absolute bottom-0">D</div>
             </div>
             <div className="w-[29px] h-[45px] md:w-[64px] md:h-[84px] lg:w-[52px] lg:h-[67px] bg-[#2f1e83] flex justify-center rounded-xl md:rounded-[24px] lg:rounded-[18px] relative">
                 <div className="w-[25px] h-[41px] md:w-[58px] md:h-[78px] lg:w-[45px] lg:h-[62px] bg-[#261676] rounded-xl md:rounded-[24px] lg:rounded-[18px] text-white grid place-content-center text-[28px] md:text-[48px] lg:text-[36px] absolute bottom-0"></div>
-            </div>
+            </div> */}
         </div>
       </div>
       {/* Letters */}
@@ -94,8 +137,8 @@ const GamePage = ({ category }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default GamePage
+export default GamePage;
 
