@@ -8,10 +8,22 @@ const GamePage = ({ category }) => {
   const [isPaused, setIsPaused] = useState(false);
   const [health, setHealth] = useState(100);
   const [movie, setMovie] = useState([]);
+  const [guessedLetters, setGuessedLetters] = useState([]);
   
   //pauses the game
   const handleIsPaused = () => {
     setIsPaused(true);
+  };
+
+  //letter clicked
+  const handleClickedLetter = (id) => {
+    const clickedLetter = letters.find((letter) => letter.id === id)?.letter;
+
+    if (movie.includes(clickedLetter)) {
+        setGuessedLetters((prev) => [...new Set([...prev, clickedLetter])]);
+    } else {
+        setHealth((prevHealth) => Math.max(prevHealth - 10, 0));
+    };
   };
 
  //fetching data based on category chosen
@@ -36,7 +48,7 @@ const GamePage = ({ category }) => {
                 });
 
                 const refinedMoviesTitles = refinedMovies.map((refinedMovie) => refinedMovie.title);
-                const singlemovie = refinedMoviesTitles[Math.floor(Math.random() * refinedMoviesTitles.length)].split("");
+                const singlemovie = refinedMoviesTitles[Math.floor(Math.random() * refinedMoviesTitles.length)].toUpperCase().split("");
                 setMovie(singlemovie);
 
                 console.log(singlemovie);
@@ -46,7 +58,7 @@ const GamePage = ({ category }) => {
         };
         getMovie();
     };
- }, []);
+ }, [category]);
 
   return (
     <div className="bg-[url(/assets/images/background-mobile.svg)] md:bg-[url(/assets/images/background-tablet.svg)] lg:bg-[url(/assets/images/background-desktop.svg)] bg-cover bg-center h-screen relative flex flex-col items-center">
@@ -55,6 +67,7 @@ const GamePage = ({ category }) => {
       {isPaused && <Paused setIsPaused={setIsPaused} />}
       {/* <YouWin /> */}
       {/* <YouLose /> */}
+
       {/* Head */}
       <div className="absolute top-[30px] md:top-[78px] lg:top-[50px] px-6 md:px-12 flex justify-between w-full">
         <div className="flex items-center gap-4 md:gap-8">
@@ -70,38 +83,22 @@ const GamePage = ({ category }) => {
             <img src="/assets/images/icon-heart.svg" alt="Heart icon" className="w-[26px] md:w-[53px]"/>
         </div>
       </div>
+
       {/* Guesses */}
       <div className="flex items-center flex-col gap-2 md:gap-6 w-full px-6 md:px-12 md:mt-[100px] lg:mt-[20px]">
         <div className="mt-40 grid gap-2 justify-center" style={{ gridTemplateColumns: `repeat(${movie.length}, minmax(0, 1fr))` }}>
             {
                 movie.map((letter, index) => {
                     return (
-                        <div key={index} className="w-[29px] h-[45px] md:w-[64px] md:h-[84px] lg:w-[52px] lg:h-[67px] bg-[#2f1e83] flex justify-center rounded-xl md:rounded-[24px] lg:rounded-[18px] relative">
-                            <div className="w-[25px] h-[41px] md:w-[58px] md:h-[78px] lg:w-[45px] lg:h-[62px] bg-[#261676] rounded-xl md:rounded-[24px] lg:rounded-[18px] text-white grid place-content-center text-[28px] md:text-[48px] lg:text-[36px] absolute bottom-0"></div>
+                        <div key={index} className={`w-[29px] h-[45px] md:w-[64px] md:h-[84px] lg:w-[52px] lg:h-[67px] ${guessedLetters.includes(letter) ? "bg-[#3d73fb]" : "bg-[#2f1e83]"} flex justify-center rounded-xl md:rounded-[24px] lg:rounded-[18px] relative`}>
+                            <div className={`w-[25px] h-[41px] md:w-[58px] md:h-[78px] lg:w-[45px] lg:h-[62px] ${guessedLetters.includes(letter) ? "bg-[#2463FF]" : "bg-[#261676]"} rounded-xl md:rounded-[24px] lg:rounded-[18px] text-white grid place-content-center text-[28px] md:text-[48px] lg:text-[36px] absolute bottom-0`}>{guessedLetters.includes(letter) ? letter : ""}</div>
                         </div>
                     )
                 })
             }
-            {/* <div className="w-[29px] h-[45px] md:w-[64px] md:h-[84px] lg:w-[52px] lg:h-[67px] bg-[#3d73fb] flex justify-center rounded-xl md:rounded-[24px] lg:rounded-[18px] relative">
-                <div className="w-[25px] h-[41px] md:w-[58px] md:h-[78px] lg:w-[45px] lg:h-[62px] bg-[#2463FF] rounded-xl md:rounded-[24px] lg:rounded-[18px] text-white grid place-content-center text-[28px] md:text-[48px] lg:text-[36px] absolute bottom-0">U</div>
-            </div>
-            <div className="w-[29px] h-[45px] md:w-[64px] md:h-[84px] lg:w-[52px] lg:h-[67px] bg-[#3d73fb] flex justify-center rounded-xl md:rounded-[24px] lg:rounded-[18px] relative">
-                <div className="w-[25px] h-[41px] md:w-[58px] md:h-[78px] lg:w-[45px] lg:h-[62px] bg-[#2463FF] rounded-xl md:rounded-[24px] lg:rounded-[18px] text-white grid place-content-center text-[28px] md:text-[48px] lg:text-[36px] absolute bottom-0">N</div> 
-            </div>
-            <div className="w-[29px] h-[45px] md:w-[64px] md:h-[84px] lg:w-[52px] lg:h-[67px] bg-[#3d73fb] flex justify-center rounded-xl md:rounded-[24px] lg:rounded-[18px] relative">
-                <div className="w-[25px] h-[41px] md:w-[58px] md:h-[78px] lg:w-[45px] lg:h-[62px] bg-[#2463FF] rounded-xl md:rounded-[24px] lg:rounded-[18px] text-white grid place-content-center text-[28px] md:text-[48px] lg:text-[36px] absolute bottom-0">I</div>
-            </div>
-            <div className="w-[29px] h-[45px] md:w-[64px] md:h-[84px] lg:w-[52px] lg:h-[67px] bg-[#2f1e83] flex justify-center rounded-xl md:rounded-[24px] lg:rounded-[18px] relative">
-                <div className="w-[25px] h-[41px] md:w-[58px] md:h-[78px] lg:w-[45px] lg:h-[62px] bg-[#261676] rounded-xl md:rounded-[24px] lg:rounded-[18px] text-white grid place-content-center text-[28px] md:text-[48px] lg:text-[36px] absolute bottom-0"></div>
-            </div>
-            <div className="w-[29px] h-[45px] md:w-[64px] md:h-[84px] lg:w-[52px] lg:h-[67px] bg-[#3d73fb] flex justify-center rounded-xl md:rounded-[24px] lg:rounded-[18px] relative">
-                <div className="w-[25px] h-[41px] md:w-[58px] md:h-[78px] lg:w-[45px] lg:h-[62px] bg-[#2463FF] rounded-xl md:rounded-[24px] lg:rounded-[18px] text-white grid place-content-center text-[28px] md:text-[48px] lg:text-[36px] absolute bottom-0">D</div>
-            </div>
-            <div className="w-[29px] h-[45px] md:w-[64px] md:h-[84px] lg:w-[52px] lg:h-[67px] bg-[#2f1e83] flex justify-center rounded-xl md:rounded-[24px] lg:rounded-[18px] relative">
-                <div className="w-[25px] h-[41px] md:w-[58px] md:h-[78px] lg:w-[45px] lg:h-[62px] bg-[#261676] rounded-xl md:rounded-[24px] lg:rounded-[18px] text-white grid place-content-center text-[28px] md:text-[48px] lg:text-[36px] absolute bottom-0"></div>
-            </div> */}
         </div>
       </div>
+
       {/* Letters */}
       <div className="w-full md:w-auto px-6 md:px-12 mt-[120px] lg:mt-[80px] grid gap-4 justify-center">
         {/* Dynamically create rows */}
@@ -110,7 +107,7 @@ const GamePage = ({ category }) => {
                 {/* Dynamically populate letters */}
                 {
                     letters.slice(rowIndex * 9, rowIndex * 9 + 9).map(({ id, letter, opacity }) => (
-                        <div key={id} className={`w-[29px] h-[45px] md:w-[64px] md:h-[84px] lg:w-[52px] lg:h-[67px] bg-white text-[#261676] text-[24px] md:text-[42px] lg:text-[36px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer ${opacity ? "opacity-40" : ""}`}>{letter}</div>
+                        <div key={id} onClick={() => handleClickedLetter(id)} className={`w-[29px] h-[45px] md:w-[64px] md:h-[84px] lg:w-[52px] lg:h-[67px] bg-white text-[#261676] text-[24px] md:text-[42px] lg:text-[36px] rounded-lg md:rounded-[20px] grid place-content-center cursor-pointer ${opacity ? "opacity-40" : ""}`}>{letter}</div>
                     ))
                 }
             </div>
@@ -121,4 +118,5 @@ const GamePage = ({ category }) => {
 };
 
 export default GamePage;
+
 
