@@ -77,6 +77,8 @@ const GamePage = ({ category }) => {
 
         const singlemovie = refinedMoviesTitles[Math.floor(Math.random() * refinedMoviesTitles.length)].toUpperCase().split("");
         setMovie(singlemovie);
+
+        console.log(singlemovie)
         
     } catch (error) {
         console.error(`Error: ${error}`);
@@ -121,7 +123,7 @@ const GamePage = ({ category }) => {
       {!isPaused && <div className="absolute inset-0 bg-black/50"></div>}
       {(isPaused || isWon || isLose) && <div className="absolute inset-0 bg-black/60 z-20"></div>}
       {isPaused && <Paused setIsPaused={setIsPaused} />}
-      {isWon && <YouWin />}
+      {isWon && <YouWin handlePlayAgain={handlePlayAgain} handleHomepage={handleHomepage} />}
       {isLose && <YouLose word={movie} category={category} handlePlayAgain={handlePlayAgain} handleHomepage={handleHomepage} />}
 
       {/* Head */}
