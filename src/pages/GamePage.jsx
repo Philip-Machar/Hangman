@@ -41,43 +41,77 @@ const GamePage = ({ category }) => {
     };
   };
 
+  //Determing when a player loses
   useEffect(() => {
     if (health === 0) {
         setIsLose(true);
     }
   }, [health]);
 
+  //fetch movies
+  const getMovie = async () => {
+    const pages = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
+    const randomPageIndex = Math.floor(Math.random() * pages.length);
+    const page = pages[randomPageIndex];
+    try {
+        const res = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=52d04f0ad27d273868996d5c327a9b17&page=${page}`);
+        const movies = await res.json();
+
+        const refinedMovies = movies.results.filter((movie) => {
+            const movieTitle = movie.title;
+
+            if (movieTitle.split(" ").length < 2) {
+                if (movieTitle.length < 10) {
+                    if (movieTitle.split("").every((char) => isNaN(char))){
+                        return movieTitle
+                    }
+                }
+            }
+        });
+
+        const refinedMoviesTitles = refinedMovies.map((refinedMovie) => refinedMovie.title);
+
+        if (refinedMoviesTitles.length === 0) {
+            return getMovie();
+        }
+
+        const singlemovie = refinedMoviesTitles[Math.floor(Math.random() * refinedMoviesTitles.length)].toUpperCase().split("");
+        setMovie(singlemovie);
+        
+    } catch (error) {
+        console.error(`Error: ${error}`);
+    };
+  };
+
+  //restarting the game and playing again
+  const handlePlayAgain = () => {
+    setIsPaused(false);
+    setHealth(100);
+    setMovie([]);
+    setGuessedLetters([]);
+    setIsWon(false);
+    setIsLose(false);
+    
+    letters.forEach((letter) => letter.opacity = false);
+
+    getMovie();
+  };
+
+  //Clear state and taking player back to homepage
+  const handleHomepage = () => {
+    setIsPaused(false);
+    setHealth(100);
+    setMovie([]);
+    setGuessedLetters([]);
+    setIsWon(false);
+    setIsLose(false);
+    
+    letters.forEach((letter) => letter.opacity = false);
+  };
+
  //fetching data based on category chosen
  useEffect(() => {
     if (category === "MOVIES"){
-        const getMovie = async () => {
-            const pages = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
-            const randomPageIndex = Math.floor(Math.random() * pages.length);
-            const page = pages[randomPageIndex];
-            try {
-                const res = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=52d04f0ad27d273868996d5c327a9b17&page=${page}`);
-                const movies = await res.json();
-
-                const refinedMovies = movies.results.filter((movie) => {
-                    const movieTitle = movie.title;
-
-                    if (movieTitle.split(" ").length < 2) {
-                        if (movieTitle.length < 10) {
-                            if (movieTitle.split("").every((char) => isNaN(char))){
-                                return movieTitle
-                            }
-                        }
-                    }
-                });
-
-                const refinedMoviesTitles = refinedMovies.map((refinedMovie) => refinedMovie.title);
-                const singlemovie = refinedMoviesTitles[Math.floor(Math.random() * refinedMoviesTitles.length)].toUpperCase().split("");
-                setMovie(singlemovie);
-                
-            } catch (error) {
-                console.error(`Error: ${error}`);
-            };
-        };
         getMovie();
     };
  }, [category]);
@@ -88,7 +122,7 @@ const GamePage = ({ category }) => {
       {(isPaused || isWon || isLose) && <div className="absolute inset-0 bg-black/60 z-20"></div>}
       {isPaused && <Paused setIsPaused={setIsPaused} />}
       {isWon && <YouWin />}
-      {isLose && <YouLose word={movie} category={category} />}
+      {isLose && <YouLose word={movie} category={category} handlePlayAgain={handlePlayAgain} handleHomepage={handleHomepage} />}
 
       {/* Head */}
       <div className="absolute top-[30px] md:top-[78px] lg:top-[50px] px-6 md:px-12 flex justify-between w-full">
