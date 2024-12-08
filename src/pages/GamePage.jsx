@@ -77,8 +77,6 @@ const GamePage = ({ category }) => {
 
         const singlemovie = refinedMoviesTitles[Math.floor(Math.random() * refinedMoviesTitles.length)].toUpperCase().split("");
         setMovie(singlemovie);
-
-        console.log(singlemovie)
         
     } catch (error) {
         console.error(`Error: ${error}`);
