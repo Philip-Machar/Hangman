@@ -109,7 +109,7 @@ const GamePage = ({ category }) => {
     letters.forEach((letter) => letter.opacity = false);
   };
 
- //fetching data based on category chosen
+ //fetching movie data
  useEffect(() => {
     if (category === "MOVIES"){
         getMovie();
