@@ -89,12 +89,12 @@ const GamePage = ({ category }) => {
       {(isPaused || isWon || isLose) && <div className="absolute inset-0 bg-black/60 z-20"></div>}
       {isPaused && <Paused setIsPaused={setIsPaused} />}
       {isWon && <YouWin />}
-      {isLose && <YouLose word={movie} />}
+      {isLose && <YouLose word={movie} category={category} />}
 
       {/* Head */}
       <div className="absolute top-[30px] md:top-[78px] lg:top-[50px] px-6 md:px-12 flex justify-between w-full">
         <div className="flex items-center gap-4 md:gap-8">
-            <div onClick={handleIsPaused} className="bg-gradient-to-b from-[#FE71FE] to-[#7199FF] w-[40px] h-[40px] md:w-[64px] md:h-[64px] rounded-full flex justify-center items-center relative">
+            <div onClick={handleIsPaused} className="bg-gradient-to-b from-[#FE71FE] to-[#7199FF] w-[40px] h-[40px] md:w-[64px] md:h-[64px] rounded-full flex justify-center items-center relative cursor-pointer">
                 <img src="/assets/images/icon-menu.svg" alt="back icon" className="w-[17px] md:w-[25px]" />
             </div>
             <div className="text-white text-[26px] md:text-[48px] tracking-wider">{category}</div>
