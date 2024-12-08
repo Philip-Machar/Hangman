@@ -89,7 +89,7 @@ const GamePage = ({ category }) => {
       {(isPaused || isWon || isLose) && <div className="absolute inset-0 bg-black/60 z-20"></div>}
       {isPaused && <Paused setIsPaused={setIsPaused} />}
       {isWon && <YouWin />}
-      {isLose && <YouLose />}
+      {isLose && <YouLose word={movie} />}
 
       {/* Head */}
       <div className="absolute top-[30px] md:top-[78px] lg:top-[50px] px-6 md:px-12 flex justify-between w-full">
