@@ -47,9 +47,6 @@ const GamePage = ({ category }) => {
     }
   }, [health]);
 
-
-  console.log(health)
-
  //fetching data based on category chosen
  useEffect(() => {
     if (category === "MOVIES"){
