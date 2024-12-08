@@ -9,6 +9,8 @@ const GamePage = ({ category }) => {
   const [health, setHealth] = useState(100);
   const [movie, setMovie] = useState([]);
   const [guessedLetters, setGuessedLetters] = useState([]);
+  const [isWon, setIsWon] = useState(false);
+  const [isLose, setIsLose] = useState(false);
   
   //pauses the game
   const handleIsPaused = () => {
@@ -19,20 +21,40 @@ const GamePage = ({ category }) => {
   const handleClickedLetter = (id) => {
     const clickedLetterObject = letters.find((letter) => letter.id === id);
     clickedLetterObject.opacity = true;
-    const clickedLetter = clickedLetterObject?.letter;
+    const clickedLetter = clickedLetterObject.letter;
 
     if (movie.includes(clickedLetter)) {
-        setGuessedLetters((prev) => [...new Set([...prev, clickedLetter])]);
+        setGuessedLetters(prev => {
+            const updatedGuessedLetters = [...new Set([...prev, clickedLetter])];
+            
+            // Check win condition
+            const filteredMovie = movie.filter(char => char.match(/[A-Z]/)); // Only letters
+            const hasWon = filteredMovie.every(letter => updatedGuessedLetters.includes(letter));
+            if (hasWon) {
+              setIsWon(true); // Mark as won
+            }
+      
+            return updatedGuessedLetters;
+        });
     } else {
         setHealth((prevHealth) => Math.max(prevHealth - 10, 0));
     };
   };
 
+  useEffect(() => {
+    if (health === 0) {
+        setIsLose(true);
+    }
+  }, [health]);
+
+
+  console.log(health)
+
  //fetching data based on category chosen
  useEffect(() => {
     if (category === "MOVIES"){
         const getMovie = async () => {
-            const pages = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+            const pages = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
             const randomPageIndex = Math.floor(Math.random() * pages.length);
             const page = pages[randomPageIndex];
             try {
@@ -65,10 +87,10 @@ const GamePage = ({ category }) => {
   return (
     <div className="bg-[url(/assets/images/background-mobile.svg)] md:bg-[url(/assets/images/background-tablet.svg)] lg:bg-[url(/assets/images/background-desktop.svg)] bg-cover bg-center h-screen relative flex flex-col items-center">
       {!isPaused && <div className="absolute inset-0 bg-black/50"></div>}
-      {isPaused && <div className="absolute inset-0 bg-black/60 z-20"></div>}
+      {(isPaused || isWon || isLose) && <div className="absolute inset-0 bg-black/60 z-20"></div>}
       {isPaused && <Paused setIsPaused={setIsPaused} />}
-      {/* <YouWin /> */}
-      {/* <YouLose /> */}
+      {isWon && <YouWin />}
+      {isLose && <YouLose />}
 
       {/* Head */}
       <div className="absolute top-[30px] md:top-[78px] lg:top-[50px] px-6 md:px-12 flex justify-between w-full">
