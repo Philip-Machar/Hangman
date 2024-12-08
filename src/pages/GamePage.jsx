@@ -122,7 +122,7 @@ const GamePage = ({ category }) => {
     <div className="bg-[url(/assets/images/background-mobile.svg)] md:bg-[url(/assets/images/background-tablet.svg)] lg:bg-[url(/assets/images/background-desktop.svg)] bg-cover bg-center h-screen relative flex flex-col items-center">
       {!isPaused && <div className="absolute inset-0 bg-black/50"></div>}
       {(isPaused || isWon || isLose) && <div className="absolute inset-0 bg-black/60 z-20"></div>}
-      {isPaused && <Paused setIsPaused={setIsPaused} />}
+      {isPaused && <Paused setIsPaused={setIsPaused} handleHomepage={handleHomepage} />}
       {isWon && <YouWin handlePlayAgain={handlePlayAgain} handleHomepage={handleHomepage} />}
       {isLose && <YouLose word={movie} category={category} handlePlayAgain={handlePlayAgain} handleHomepage={handleHomepage} />}
 
