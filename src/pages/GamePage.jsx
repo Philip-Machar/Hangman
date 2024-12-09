@@ -7,10 +7,15 @@ import letters from "../data/letters";
 const GamePage = ({ category }) => {
   const [isPaused, setIsPaused] = useState(false);
   const [health, setHealth] = useState(100);
-  const [movie, setMovie] = useState([]);
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [isWon, setIsWon] = useState(false);
   const [isLose, setIsLose] = useState(false);
+
+  const [cat, setCat] = useState("");
+  const [catState, setCatState] = useState([])
+
+  const [movie, setMovie] = useState([]);
+  const [show, setShow] = useState([]);
   
   //pauses the game
   const handleIsPaused = () => {
@@ -23,12 +28,12 @@ const GamePage = ({ category }) => {
     clickedLetterObject.opacity = true;
     const clickedLetter = clickedLetterObject.letter;
 
-    if (movie.includes(clickedLetter)) {
+    if (catState.includes(clickedLetter)) {
         setGuessedLetters(prev => {
             const updatedGuessedLetters = [...new Set([...prev, clickedLetter])];
             
             // Check win condition
-            const filteredMovie = movie.filter(char => char.match(/[A-Z]/)); // Only letters
+            const filteredMovie = catState.filter(char => char.match(/[A-Z]/)); // Only letters
             const hasWon = filteredMovie.every(letter => updatedGuessedLetters.includes(letter));
             if (hasWon) {
               setIsWon(true); // Mark as won
@@ -83,18 +88,61 @@ const GamePage = ({ category }) => {
     };
   };
 
-  //restarting the game and playing again
-  const handlePlayAgain = () => {
+
+ //fetch tv shows
+ const getShows = async () => {
+    const pages = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
+    const randomPageIndex = Math.floor(Math.random() * pages.length);
+    const page = pages[randomPageIndex];
+
+    try {
+        const res = await fetch(`https://api.themoviedb.org/3/discover/tv?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&api_key=52d04f0ad27d273868996d5c327a9b17`);
+        const shows = await res.json();
+
+        const refinedShows = shows.results.filter((show) => {
+            const showName = show.name;
+
+            if (showName.split(" ").length < 2) {
+                if (showName.length < 10) {
+                    if (showName.split("").every((char) => isNaN(char))){
+                        return showName
+                    }
+                }
+            }
+        });
+
+        const refinedShowNames = refinedShows.map((refinedShow) => refinedShow.name);
+
+        if (refinedShowNames.length === 0) {
+            return getShows();
+        }
+
+        const singleShow = refinedShowNames[Math.floor(Math.random() * refinedShowNames.length)].toUpperCase().split("");
+        setShow(singleShow);
+
+    } catch (error){
+        console.error(`Error: ${error}`);
+    };
+ };
+
+
+ //restarting the game and playing again
+ const handlePlayAgain = () => {
     setIsPaused(false);
     setHealth(100);
     setMovie([]);
     setGuessedLetters([]);
     setIsWon(false);
     setIsLose(false);
+    setCatState([])
     
     letters.forEach((letter) => letter.opacity = false);
 
-    getMovie();
+    if (category === "MOVIES") {
+        getMovie();
+    } else if (category === "TV SHOWS") {
+        getShows();
+    }
   };
 
   //Clear state and taking player back to homepage
@@ -105,16 +153,32 @@ const GamePage = ({ category }) => {
     setGuessedLetters([]);
     setIsWon(false);
     setIsLose(false);
+    setCatState([])
     
     letters.forEach((letter) => letter.opacity = false);
   };
 
- //fetching movie data
- useEffect(() => {
+ 
+  //fetching data
+  useEffect(() => {
     if (category === "MOVIES"){
         getMovie();
-    };
- }, [category]);
+    } else if (category === "TV SHOWS") {
+        getShows();
+    }
+  }, [category]);
+
+
+ //Check category
+ useEffect(() => {
+    if (category === "MOVIES") {
+        setCat("MOVIES");
+        setCatState(movie);
+     } else if (category === "TV SHOWS") {
+        setCat("TV SHOWS");
+        setCatState(show);
+     }
+ }, [category, movie, show]);
 
   return (
     <div className="bg-[url(/assets/images/background-mobile.svg)] md:bg-[url(/assets/images/background-tablet.svg)] lg:bg-[url(/assets/images/background-desktop.svg)] bg-cover bg-center h-screen relative flex flex-col items-center">
@@ -122,7 +186,7 @@ const GamePage = ({ category }) => {
       {(isPaused || isWon || isLose) && <div className="absolute inset-0 bg-black/60 z-20"></div>}
       {isPaused && <Paused setIsPaused={setIsPaused} handleHomepage={handleHomepage} />}
       {isWon && <YouWin handlePlayAgain={handlePlayAgain} handleHomepage={handleHomepage} />}
-      {isLose && <YouLose word={movie} category={category} handlePlayAgain={handlePlayAgain} handleHomepage={handleHomepage} />}
+      {isLose && <YouLose word={catState} category={cat} handlePlayAgain={handlePlayAgain} handleHomepage={handleHomepage} />}
 
       {/* Head */}
       <div className="absolute top-[30px] md:top-[78px] lg:top-[50px] px-6 md:px-12 flex justify-between w-full">
@@ -130,7 +194,7 @@ const GamePage = ({ category }) => {
             <div onClick={handleIsPaused} className="bg-gradient-to-b from-[#FE71FE] to-[#7199FF] w-[40px] h-[40px] md:w-[64px] md:h-[64px] rounded-full flex justify-center items-center relative cursor-pointer">
                 <img src="/assets/images/icon-menu.svg" alt="back icon" className="w-[17px] md:w-[25px]" />
             </div>
-            <div className="text-white text-[26px] md:text-[48px] tracking-wider">{category}</div>
+            <div className="text-white text-[26px] md:text-[48px] tracking-wider">{cat}</div>
         </div>
         <div className="flex justify-center items-center gap-4 md:gap-8">
             <div className="w-[57px] h-[16px] md:w-[160px] md:h-[31px] bg-white rounded-3xl flex items-center">
@@ -142,9 +206,9 @@ const GamePage = ({ category }) => {
 
       {/* Guesses */}
       <div className="flex items-center flex-col gap-2 md:gap-6 w-full px-6 md:px-12 md:mt-[100px] lg:mt-[20px]">
-        <div className="mt-40 grid gap-2 justify-center" style={{ gridTemplateColumns: `repeat(${movie.length}, minmax(0, 1fr))` }}>
+        <div className="mt-40 grid gap-2 justify-center" style={{ gridTemplateColumns: `repeat(${catState.length}, minmax(0, 1fr))` }}>
             {
-                movie.map((letter, index) => {
+                catState.map((letter, index) => {
                     return (
                         <div key={index} className={`w-[29px] h-[45px] md:w-[64px] md:h-[84px] lg:w-[52px] lg:h-[67px] ${guessedLetters.includes(letter) ? "bg-[#3d73fb]" : "bg-[#2f1e83]"} flex justify-center rounded-xl md:rounded-[24px] lg:rounded-[18px] relative`}>
                             <div className={`w-[25px] h-[41px] md:w-[58px] md:h-[78px] lg:w-[45px] lg:h-[62px] ${guessedLetters.includes(letter) ? "bg-[#2463FF]" : "bg-[#261676]"} rounded-xl md:rounded-[24px] lg:rounded-[18px] text-white grid place-content-center text-[28px] md:text-[48px] lg:text-[36px] absolute bottom-0`}>{guessedLetters.includes(letter) ? letter : ""}</div>
