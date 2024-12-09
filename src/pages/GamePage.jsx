@@ -16,6 +16,7 @@ const GamePage = ({ category }) => {
 
   const [movie, setMovie] = useState([]);
   const [show, setShow] = useState([]);
+  const [country, setCountry] = useState([]);
   
   //pauses the game
   const handleIsPaused = () => {
@@ -33,7 +34,7 @@ const GamePage = ({ category }) => {
             const updatedGuessedLetters = [...new Set([...prev, clickedLetter])];
             
             // Check win condition
-            const filteredMovie = catState.filter(char => char.match(/[A-Z]/)); // Only letters
+            const filteredMovie = catState.filter(char => char.match(/[A-Z]/));
             const hasWon = filteredMovie.every(letter => updatedGuessedLetters.includes(letter));
             if (hasWon) {
               setIsWon(true); // Mark as won
@@ -126,6 +127,39 @@ const GamePage = ({ category }) => {
  };
 
 
+ //fetch countries
+ const getCountries = async () => {
+    try {
+        const response = await fetch("https://restcountries.com/v3.1/all");
+        const data = await response.json();
+    
+        const countries = data.map(country => ({name: country.name.common}));
+
+        const refinedCountries = countries.filter((country) => {
+            const countryName = country.name;
+
+            if (countryName.split(" ").length < 2) {
+                if (countryName.length < 10) {
+                    return countryName
+                }
+            }
+        });
+
+        const refinedCountryNames = refinedCountries.map((refinedCountry) => refinedCountry.name);
+
+        if (refinedCountryNames.length === 0) {
+            return getCountries();
+        }
+
+        const singleCountry = refinedCountryNames[Math.floor(Math.random() * refinedCountryNames.length)].toUpperCase().split("");
+        setCountry(singleCountry);
+
+      } catch (error) {
+        console.error("Error fetching countries:", error);
+      }
+ };
+
+
  //restarting the game and playing again
  const handlePlayAgain = () => {
     setIsPaused(false);
@@ -142,6 +176,8 @@ const GamePage = ({ category }) => {
         getMovie();
     } else if (category === "TV SHOWS") {
         getShows();
+    } else if (category === "COUNTRIES") {
+        getCountries();
     }
   };
 
@@ -165,6 +201,8 @@ const GamePage = ({ category }) => {
         getMovie();
     } else if (category === "TV SHOWS") {
         getShows();
+    } else if (category === "COUNTRIES") {
+        getCountries();
     }
   }, [category]);
 
@@ -177,8 +215,11 @@ const GamePage = ({ category }) => {
      } else if (category === "TV SHOWS") {
         setCat("TV SHOWS");
         setCatState(show);
+     } else if (category === "COUNTRIES") {
+        setCat("COUNTRIES");
+        setCatState(country);
      }
- }, [category, movie, show]);
+ }, [category, movie, show, country]);
 
   return (
     <div className="bg-[url(/assets/images/background-mobile.svg)] md:bg-[url(/assets/images/background-tablet.svg)] lg:bg-[url(/assets/images/background-desktop.svg)] bg-cover bg-center h-screen relative flex flex-col items-center">
