@@ -17,6 +17,7 @@ const GamePage = ({ category }) => {
   const [movie, setMovie] = useState([]);
   const [show, setShow] = useState([]);
   const [country, setCountry] = useState([]);
+  const [city, setCity] = useState([]);
   
   //pauses the game
   const handleIsPaused = () => {
@@ -160,6 +161,40 @@ const GamePage = ({ category }) => {
  };
 
 
+ //fetch capital cities
+ const getCities = async () => {
+    try {
+        const response = await fetch("https://restcountries.com/v3.1/all");
+        const data = await response.json();
+    
+        const cities = data.map((country) => ({name: country.capital ? country.capital[0] : "No Capital"}));
+
+        const refinedCities = cities.filter((city) => {
+            const cityName = city.name;
+
+            if (cityName.split(" ").length < 2) {
+                if (cityName.length < 10) {
+                    return cityName
+                }
+            }
+        });
+
+        const refinedCityNames = refinedCities.map((refinedCity) => refinedCity.name);
+
+        if (refinedCityNames.length === 0) {
+            return getCities();
+        }
+
+        const singleCity = refinedCityNames[Math.floor(Math.random() * refinedCityNames.length)].toUpperCase().split("");
+        setCity(singleCity);
+        console.log(singleCity);
+
+      } catch (error) {
+        console.error("Error fetching countries:", error);
+      }
+ };
+
+
  //restarting the game and playing again
  const handlePlayAgain = () => {
     setIsPaused(false);
@@ -178,6 +213,8 @@ const GamePage = ({ category }) => {
         getShows();
     } else if (category === "COUNTRIES") {
         getCountries();
+    } else if (category === "CAPITAL CITIES") {
+        getCities();
     }
   };
 
@@ -203,6 +240,8 @@ const GamePage = ({ category }) => {
         getShows();
     } else if (category === "COUNTRIES") {
         getCountries();
+    } else if (category === "CAPITAL CITIES") {
+        getCities();
     }
   }, [category]);
 
@@ -218,8 +257,11 @@ const GamePage = ({ category }) => {
      } else if (category === "COUNTRIES") {
         setCat("COUNTRIES");
         setCatState(country);
+     } else if (category === "CAPITAL CITIES") {
+        setCat("CAPITAL CITIES");
+        setCatState(city);
      }
- }, [category, movie, show, country]);
+ }, [category, movie, show, country, city]);
 
   return (
     <div className="bg-[url(/assets/images/background-mobile.svg)] md:bg-[url(/assets/images/background-tablet.svg)] lg:bg-[url(/assets/images/background-desktop.svg)] bg-cover bg-center h-screen relative flex flex-col items-center">
