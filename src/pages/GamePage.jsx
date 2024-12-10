@@ -92,7 +92,7 @@ const GamePage = ({ category }) => {
     } catch (error) {
         console.error(`Error: ${error}`);
     } finally {
-        setIsLoading(true);
+        setIsLoading(false);
     }
   };
 
@@ -131,7 +131,7 @@ const GamePage = ({ category }) => {
     } catch (error){
         console.error(`Error: ${error}`);
     } finally {
-        setIsLoading(true);
+        setIsLoading(false);
     }
  };
 
@@ -166,7 +166,7 @@ const GamePage = ({ category }) => {
       } catch (error) {
         console.error("Error fetching countries:", error);
       } finally {
-        setIsLoading(true);
+        setIsLoading(false);
     }
  };
 
@@ -201,7 +201,7 @@ const GamePage = ({ category }) => {
       } catch (error) {
         console.error("Error fetching countries:", error);
       } finally {
-        setIsLoading(true);
+        setIsLoading(false);
     }
  };
 
@@ -233,7 +233,7 @@ const GamePage = ({ category }) => {
     } catch (error) {
       console.error('Error fetching artist:', error);
     } finally {
-        setIsLoading(true);
+        setIsLoading(false);
     }
   };
 
@@ -281,7 +281,7 @@ const GamePage = ({ category }) => {
     } catch (error) {
       console.error('Error fetching artist:', error);
     } finally {
-        setIsLoading(true);
+        setIsLoading(false);
     }
  };
 
