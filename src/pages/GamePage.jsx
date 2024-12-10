@@ -266,7 +266,6 @@ const GamePage = ({ category }) => {
       const singleAnimeTitle = singleAnime[Math.floor(Math.random() * singleAnime.length)].english.toUpperCase().split("");
 
       setAnime(singleAnimeTitle);
-      console.log(singleAnimeTitle);
     } catch (error) {
       console.error('Error fetching artist:', error);
     }
