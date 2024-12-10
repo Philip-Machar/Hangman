@@ -9,7 +9,7 @@ import { nanoid } from "nanoid";
 const App = () => {
   const [category, setCategory] = useState("");
 
-  const categories = [{id: nanoid(), name: "MOVIES"}, {id: nanoid(), name: "TV SHOWS"}, {id: nanoid(), name: "COUNTRIES"}, {id: nanoid(), name: "CAPITAL CITIES"}, {id: nanoid(), name: "CELEBRITIES"}, {id: nanoid(), name: "SPORTS"}];
+  const categories = [{id: nanoid(), name: "MOVIES"}, {id: nanoid(), name: "TV SHOWS"}, {id: nanoid(), name: "COUNTRIES"}, {id: nanoid(), name: "CAPITAL CITIES"}, {id: nanoid(), name: "CELEBRITIES"}, {id: nanoid(), name: "ANIME"}];
 
   const handleClickedCategory = (id) => {
     const clickedCategory = categories.find((category) => category.id === id);

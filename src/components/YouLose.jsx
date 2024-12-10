@@ -11,8 +11,8 @@ const YouLose = ({ word, category, handlePlayAgain, handleHomepage }) => {
         category = "CITY";
     } else if (category === "CELEBRITIES") {
         category = "CELEBRITY";
-    } else {
-        category = "SPORT"
+    } else if (category === "ANIME") {
+        category = "ANIME";
     };
   return (
     <div className="absolute top-[200px] md:top-[300px] lg:top-[150px]">

@@ -19,6 +19,7 @@ const GamePage = ({ category }) => {
   const [country, setCountry] = useState([]);
   const [city, setCity] = useState([]);
   const [artist, setArtist] = useState([]);
+  const [anime, setAnime] = useState([]);
   
   //pauses the game
   const handleIsPaused = () => {
@@ -215,7 +216,6 @@ const GamePage = ({ category }) => {
         const artistFirstName = artistName.name.split(" ")[0].toUpperCase().split("")
 
         setArtist(artistFirstName);
-        console.log(artistFirstName);
 
       } else {
         console.log('No artists found');
@@ -225,6 +225,53 @@ const GamePage = ({ category }) => {
     }
   };
 
+ //fetch anime
+ const getAnime = async () => {
+    const randomPage = Math.floor(Math.random() * 100) + 1;
+    const query = `
+      query {
+        Page(page: ${randomPage}, perPage: 50) {
+          media(type: ANIME) {
+            id
+            title {
+              english
+              native
+            }
+            description
+            coverImage {
+              large
+            }
+          }
+        }
+      }
+    `;
+
+    try {
+      const response = await fetch("https://graphql.anilist.co", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ query }),
+      });
+
+      const data = await response.json();
+      const titles = data.data.Page.media.map((anime) => ({
+        english: anime.title.english || "No English Title",
+        native: anime.title.native || "No Native Title",
+      }));
+
+      const singleAnime = titles.filter(title => title.english !== "No English Title" && title.english.split(" ").length < 2);
+
+      const singleAnimeTitle = singleAnime[Math.floor(Math.random() * singleAnime.length)].english.toUpperCase().split("");
+
+      setAnime(singleAnimeTitle);
+      console.log(singleAnimeTitle);
+    } catch (error) {
+      console.error('Error fetching artist:', error);
+    }
+ };
+
  //restarting the game and playing again
  const handlePlayAgain = () => {
     setIsPaused(false);
@@ -233,7 +280,7 @@ const GamePage = ({ category }) => {
     setGuessedLetters([]);
     setIsWon(false);
     setIsLose(false);
-    setCatState([])
+    setCatState([]);
     
     letters.forEach((letter) => letter.opacity = false);
 
@@ -247,6 +294,8 @@ const GamePage = ({ category }) => {
         getCities();
     } else if (category === "CELEBRITIES") {
         getArtist();
+    } else if (category === "ANIME") {
+        getAnime();
     }
   };
 
@@ -276,6 +325,8 @@ const GamePage = ({ category }) => {
         getCities();
     } else if (category === "CELEBRITIES") {
         getArtist();
+    } else if (category === "ANIME") {
+        getAnime();
     }
   }, [category]);
 
@@ -297,8 +348,11 @@ const GamePage = ({ category }) => {
      } else if (category === "CELEBRITIES") {
         setCat("CELEBRITIES");
         setCatState(artist);
-     } 
- }, [category, movie, show, country, city, artist]);
+     } else if (category === "ANIME") {
+        setCat("ANIME");
+        setCatState(anime);
+     }
+ }, [category, movie, show, country, city, artist, anime]);
 
   return (
     <div className="bg-[url(/assets/images/background-mobile.svg)] md:bg-[url(/assets/images/background-tablet.svg)] lg:bg-[url(/assets/images/background-desktop.svg)] bg-cover bg-center h-screen relative flex flex-col items-center">
