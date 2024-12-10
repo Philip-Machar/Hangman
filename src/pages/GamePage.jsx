@@ -3,6 +3,7 @@ import Paused from "../components/Paused";
 import YouLose from "../components/YouLose";
 import YouWin from "../components/YouWin";
 import letters from "../data/letters";
+import PropagateLoader from "react-spinners/PropagateLoader";
 
 const GamePage = ({ category }) => {
   const [isPaused, setIsPaused] = useState(false);
@@ -11,15 +12,16 @@ const GamePage = ({ category }) => {
   const [isWon, setIsWon] = useState(false);
   const [isLose, setIsLose] = useState(false);
 
-  const [cat, setCat] = useState("");
-  const [catState, setCatState] = useState([])
-
   const [movie, setMovie] = useState([]);
   const [show, setShow] = useState([]);
   const [country, setCountry] = useState([]);
   const [city, setCity] = useState([]);
   const [artist, setArtist] = useState([]);
   const [anime, setAnime] = useState([]);
+
+  const [cat, setCat] = useState("");
+  const [catState, setCatState] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   
   //pauses the game
   const handleIsPaused = () => {
@@ -89,7 +91,9 @@ const GamePage = ({ category }) => {
         
     } catch (error) {
         console.error(`Error: ${error}`);
-    };
+    } finally {
+        setIsLoading(true);
+    }
   };
 
 
@@ -126,7 +130,9 @@ const GamePage = ({ category }) => {
 
     } catch (error){
         console.error(`Error: ${error}`);
-    };
+    } finally {
+        setIsLoading(true);
+    }
  };
 
 
@@ -159,7 +165,9 @@ const GamePage = ({ category }) => {
 
       } catch (error) {
         console.error("Error fetching countries:", error);
-      }
+      } finally {
+        setIsLoading(true);
+    }
  };
 
 
@@ -192,7 +200,9 @@ const GamePage = ({ category }) => {
 
       } catch (error) {
         console.error("Error fetching countries:", error);
-      }
+      } finally {
+        setIsLoading(true);
+    }
  };
 
  //fetch artist
@@ -222,6 +232,8 @@ const GamePage = ({ category }) => {
       }
     } catch (error) {
       console.error('Error fetching artist:', error);
+    } finally {
+        setIsLoading(true);
     }
   };
 
@@ -268,6 +280,8 @@ const GamePage = ({ category }) => {
       setAnime(singleAnimeTitle);
     } catch (error) {
       console.error('Error fetching artist:', error);
+    } finally {
+        setIsLoading(true);
     }
  };
 
@@ -380,7 +394,8 @@ const GamePage = ({ category }) => {
       {/* Guesses */}
       <div className="flex items-center flex-col gap-2 md:gap-6 w-full px-6 md:px-12 md:mt-[100px] lg:mt-[20px]">
         <div className="mt-40 grid gap-2 justify-center" style={{ gridTemplateColumns: `repeat(${catState.length}, minmax(0, 1fr))` }}>
-            {
+            { isLoading ? 
+              <PropagateLoader color="#2f1e83" size={30} /> :
                 catState.map((letter, index) => {
                     return (
                         <div key={index} className={`w-[29px] h-[45px] md:w-[64px] md:h-[84px] lg:w-[52px] lg:h-[67px] ${guessedLetters.includes(letter) ? "bg-[#3d73fb]" : "bg-[#2f1e83]"} flex justify-center rounded-xl md:rounded-[24px] lg:rounded-[18px] relative`}>
