@@ -18,6 +18,7 @@ const GamePage = ({ category }) => {
   const [show, setShow] = useState([]);
   const [country, setCountry] = useState([]);
   const [city, setCity] = useState([]);
+  const [artist, setArtist] = useState([]);
   
   //pauses the game
   const handleIsPaused = () => {
@@ -187,13 +188,42 @@ const GamePage = ({ category }) => {
 
         const singleCity = refinedCityNames[Math.floor(Math.random() * refinedCityNames.length)].toUpperCase().split("");
         setCity(singleCity);
-        console.log(singleCity);
 
       } catch (error) {
         console.error("Error fetching countries:", error);
       }
  };
 
+ //fetch artist
+ const getArtist = async () => {
+    try {
+      const randomLetter = letters[Math.floor(Math.random() * letters.length)].letter;
+      const startingLetter = `${randomLetter}`;
+      const url = `https://musicbrainz.org/ws/2/artist/?query=artist:${encodeURIComponent(startingLetter)}*&fmt=json`;
+
+      // Fetch data from MusicBrainz API
+      const response = await fetch(url);
+      const data = await response.json();
+    
+      if (data.artists && data.artists.length > 0) {
+        // Randomly select an artist from the list
+        const randomIndex = Math.floor(Math.random() * data.artists.length);
+        const randomArtist = data.artists[randomIndex];
+        
+        // Display artist name and other details
+        const artistName = { name: randomArtist.name };
+        const artistFirstName = artistName.name.split(" ")[0].toUpperCase().split("")
+
+        setArtist(artistFirstName);
+        console.log(artistFirstName);
+
+      } else {
+        console.log('No artists found');
+      }
+    } catch (error) {
+      console.error('Error fetching artist:', error);
+    }
+  };
 
  //restarting the game and playing again
  const handlePlayAgain = () => {
@@ -215,6 +245,8 @@ const GamePage = ({ category }) => {
         getCountries();
     } else if (category === "CAPITAL CITIES") {
         getCities();
+    } else if (category === "CELEBRITIES") {
+        getArtist();
     }
   };
 
@@ -242,6 +274,8 @@ const GamePage = ({ category }) => {
         getCountries();
     } else if (category === "CAPITAL CITIES") {
         getCities();
+    } else if (category === "CELEBRITIES") {
+        getArtist();
     }
   }, [category]);
 
@@ -260,8 +294,11 @@ const GamePage = ({ category }) => {
      } else if (category === "CAPITAL CITIES") {
         setCat("CAPITAL CITIES");
         setCatState(city);
-     }
- }, [category, movie, show, country, city]);
+     } else if (category === "CELEBRITIES") {
+        setCat("CELEBRITIES");
+        setCatState(artist);
+     } 
+ }, [category, movie, show, country, city, artist]);
 
   return (
     <div className="bg-[url(/assets/images/background-mobile.svg)] md:bg-[url(/assets/images/background-tablet.svg)] lg:bg-[url(/assets/images/background-desktop.svg)] bg-cover bg-center h-screen relative flex flex-col items-center">

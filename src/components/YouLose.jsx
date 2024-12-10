@@ -9,8 +9,8 @@ const YouLose = ({ word, category, handlePlayAgain, handleHomepage }) => {
         category = "COUNTRY";
     } else if (category === "CAPITAL CITIES") {
         category = "CITY";
-    } else if (category === "ANIMALS") {
-        category = "ANIMAL";
+    } else if (category === "CELEBRITIES") {
+        category = "CELEBRITY";
     } else {
         category = "SPORT"
     };
