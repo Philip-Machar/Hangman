@@ -127,6 +127,7 @@ const GamePage = ({ category }) => {
 
         const singleShow = refinedShowNames[Math.floor(Math.random() * refinedShowNames.length)].toUpperCase().split("");
         setShow(singleShow);
+        console.log(singleShow)
 
     } catch (error){
         console.error(`Error: ${error}`);
