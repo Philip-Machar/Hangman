@@ -15,7 +15,7 @@ const Categories = ({categories, clickedCategory}) => {
           categories.map((category) => {
             return (
               <Link key={category.id} to="/game-page">
-                <div onClick={() => clickedCategory(category.id)} className="bg-[#3d73fb] w-[276px] h-[65px] md:w-[260px] md:h-[160px] lg:w-[208px] lg:h-[108px] relative flex justify-center rounded-3xl">
+                <div onClick={() => clickedCategory(category.id)} className="bg-[#3d73fb] w-[276px] h-[65px] md:w-[260px] md:h-[160px] lg:w-[208px] lg:h-[108px] relative flex justify-center rounded-3xl hover:opacity-85">
                     <div className="bg-[#2463FF] w-[270px] h-[60px] md:w-[250px] md:h-[150px] lg:w-[200px] lg:h-[100px] absolute bottom-0 rounded-3xl grid place-content-center text-white text-2xl md:text-[36px] lg:text-[28px] tracking-wider">{category.name}</div>
                 </div>
               </Link>
