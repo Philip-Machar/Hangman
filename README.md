@@ -2,7 +2,7 @@
 
 A React-based word-guessing game where players attempt to uncover hidden words by guessing letters.  
 
-![Hangman Screenshot](./public/assets/images/hangman_screenshot.png)  
+![Hangman Screenshot](./public/assets/images/hangman-screenshot.png)  
 
 [Live Demo](https://hangman-one-beige.vercel.app/)  
 
