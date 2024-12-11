@@ -41,7 +41,7 @@ const HowToPlayPage = () => {
             <h1 className="text-[#261676] md:text-[40px] lg:text-[28px]">CHOOSE A CATEGORY</h1>
           </div>
           <p className="text-[#887DC0] text-[16px] md:text-[20px]">
-            First, choose a word category, like animals or movies. The computer
+            First, choose a word category, like celebrities or movies. The computer
             then randomly selects a secret word from that topic and shows you
             blanks for each letter of the word.
           </p>
@@ -54,7 +54,7 @@ const HowToPlayPage = () => {
           <p className="text-[#887DC0] md:text-[20px]">
             Take turns guessing letters. The computer fills in the relevant blank
             spaces if your guess is correct. If it’s wrong, you lose some health,
-            which empties after eight incorrect guesses.
+            which empties after ten incorrect guesses.
           </p>
         </div>
         <div className="bg-white rounded-3xl p-6 md:p-10 lg:p-6 grid place-content-center gap-2 px-8 z-10">
